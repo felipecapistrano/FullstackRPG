@@ -17,16 +17,16 @@ namespace FullstackRPG.Controllers
         private FullstackRPGContext db = new FullstackRPGContext();
 
         // GET: api/Personagens
-        public IQueryable<Personagem> GetPersonagems()
+        public IQueryable<Personagem> Getpersonagens()
         {
-            return db.Personagems;
+            return db.Personagens;
         }
 
         // GET: api/Personagens/5
         [ResponseType(typeof(Personagem))]
         public IHttpActionResult GetPersonagem(int id)
         {
-            Personagem personagem = db.Personagems.Find(id);
+            Personagem personagem = db.Personagens.Find(id);
             if (personagem == null)
             {
                 return NotFound();
@@ -79,7 +79,7 @@ namespace FullstackRPG.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Personagems.Add(personagem);
+            db.Personagens.Add(personagem);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = personagem.Id }, personagem);
@@ -89,13 +89,13 @@ namespace FullstackRPG.Controllers
         [ResponseType(typeof(Personagem))]
         public IHttpActionResult DeletePersonagem(int id)
         {
-            Personagem personagem = db.Personagems.Find(id);
+            Personagem personagem = db.Personagens.Find(id);
             if (personagem == null)
             {
                 return NotFound();
             }
 
-            db.Personagems.Remove(personagem);
+            db.Personagens.Remove(personagem);
             db.SaveChanges();
 
             return Ok(personagem);
@@ -112,7 +112,7 @@ namespace FullstackRPG.Controllers
 
         private bool PersonagemExists(int id)
         {
-            return db.Personagems.Count(e => e.Id == id) > 0;
+            return db.Personagens.Count(e => e.Id == id) > 0;
         }
     }
 }

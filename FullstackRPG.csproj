@@ -183,6 +183,10 @@
     <Compile Include="Migrations\202007091546072_v1.designer.cs">
       <DependentUpon>202007091546072_v1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007101457412_v1.1.cs" />
+    <Compile Include="Migrations\202007101457412_v1.1.designer.cs">
+      <DependentUpon>202007101457412_v1.1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Arma.cs" />
     <Compile Include="Models\Armadura.cs" />
@@ -285,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007091546072_v1.resx">
       <DependentUpon>202007091546072_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007101457412_v1.1.resx">
+      <DependentUpon>202007101457412_v1.1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

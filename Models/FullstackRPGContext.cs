@@ -23,7 +23,7 @@ namespace FullstackRPG.Models
 
         public System.Data.Entity.DbSet<FullstackRPG.Models.Armadura> Armaduras { get; set; }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.Material> Materials { get; set; }
+        public System.Data.Entity.DbSet<FullstackRPG.Models.Material> Materiais { get; set; }
 
         public System.Data.Entity.DbSet<FullstackRPG.Models.Capacete> Capacetes { get; set; }
 
@@ -31,7 +31,7 @@ namespace FullstackRPG.Models
 
         public System.Data.Entity.DbSet<FullstackRPG.Models.Raça> Raça { get; set; }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.Personagem> Personagems { get; set; }
+        public System.Data.Entity.DbSet<FullstackRPG.Models.Personagem> Personagens { get; set; }
 
         public System.Data.Entity.DbSet<FullstackRPG.Models.PersonagemHabilidade> PersonagemHabilidades { get; set; }
     }

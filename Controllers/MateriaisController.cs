@@ -17,16 +17,16 @@ namespace FullstackRPG.Controllers
         private FullstackRPGContext db = new FullstackRPGContext();
 
         // GET: api/Materiais
-        public IQueryable<Material> GetMaterials()
+        public IQueryable<Material> GetMateriais()
         {
-            return db.Materials;
+            return db.Materiais;
         }
 
         // GET: api/Materiais/5
         [ResponseType(typeof(Material))]
         public IHttpActionResult GetMaterial(int id)
         {
-            Material material = db.Materials.Find(id);
+            Material material = db.Materiais.Find(id);
             if (material == null)
             {
                 return NotFound();
@@ -79,7 +79,7 @@ namespace FullstackRPG.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Materials.Add(material);
+            db.Materiais.Add(material);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = material.Id }, material);
@@ -89,13 +89,13 @@ namespace FullstackRPG.Controllers
         [ResponseType(typeof(Material))]
         public IHttpActionResult DeleteMaterial(int id)
         {
-            Material material = db.Materials.Find(id);
+            Material material = db.Materiais.Find(id);
             if (material == null)
             {
                 return NotFound();
             }
 
-            db.Materials.Remove(material);
+            db.Materiais.Remove(material);
             db.SaveChanges();
 
             return Ok(material);
@@ -112,7 +112,7 @@ namespace FullstackRPG.Controllers
 
         private bool MaterialExists(int id)
         {
-            return db.Materials.Count(e => e.Id == id) > 0;
+            return db.Materiais.Count(e => e.Id == id) > 0;
         }
     }
 }

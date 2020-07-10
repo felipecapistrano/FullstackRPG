@@ -90,3 +90,4 @@ D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG
 D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.inicial.resources
 D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.csproj.GenerateResource.cache
 D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.v1.resources
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.v11.resources

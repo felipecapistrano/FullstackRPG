@@ -21,7 +21,7 @@
                 new Arma() { Id = 3, Nome = "Excalibur", Tipo = "Espada" }
                 );
 
-            context.Materials.AddOrUpdate(x => x.Id,
+            context.Materiais.AddOrUpdate(x => x.Id,
                 new Material() { Id = 1, Nome = "Bronze" },
                 new Material() { Id = 2, Nome = "Prata" },
                 new Material() { Id = 3, Nome = "Ouro" },
@@ -50,7 +50,7 @@
                 new Raça() { Id = 2, Nome = "Orc" }
                 );
 
-            context.Personagems.AddOrUpdate(x => x.Id,
+            context.Personagens.AddOrUpdate(x => x.Id,
                 new Personagem() { Id = 1, Nome = "Jubileu", RaçaId = 1, ArmaId = 1, CapaceteId = 1, ArmaduraId = 1 },
                 new Personagem() { Id = 2, Nome = "Biluga", RaçaId = 1 },
                 new Personagem() { Id = 3, Nome = "Joeslei", RaçaId = 3, ArmaId = 3 }
