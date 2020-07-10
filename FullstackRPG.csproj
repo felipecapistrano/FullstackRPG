@@ -162,11 +162,37 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ArmadurasController.cs" />
+    <Compile Include="Controllers\ArmasController.cs" />
+    <Compile Include="Controllers\CapacetesController.cs" />
+    <Compile Include="Controllers\HabilidadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MateriaisController.cs" />
+    <Compile Include="Controllers\PersonagemHabilidadesController.cs" />
+    <Compile Include="Controllers\PersonagensController.cs" />
+    <Compile Include="Controllers\RaçasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007091412047_inicial.cs" />
+    <Compile Include="Migrations\202007091412047_inicial.designer.cs">
+      <DependentUpon>202007091412047_inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007091546072_v1.cs" />
+    <Compile Include="Migrations\202007091546072_v1.designer.cs">
+      <DependentUpon>202007091546072_v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Arma.cs" />
+    <Compile Include="Models\Armadura.cs" />
+    <Compile Include="Models\FullstackRPGContext.cs" />
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\PersonagemHabilidade.cs" />
+    <Compile Include="Models\Personagem.cs" />
+    <Compile Include="Models\Capacete.cs" />
+    <Compile Include="Models\Habilidade.cs" />
+    <Compile Include="Models\Raça.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,7 +248,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -252,6 +278,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007091412047_inicial.resx">
+      <DependentUpon>202007091412047_inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007091546072_v1.resx">
+      <DependentUpon>202007091546072_v1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
