@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FullstackRPG.Models;
+using FullstackRPG.Models.Dto;
 
 namespace FullstackRPG.Controllers
 {
@@ -17,9 +18,16 @@ namespace FullstackRPG.Controllers
         private FullstackRPGContext db = new FullstackRPGContext();
 
         // GET: api/Habilidades
-        public IQueryable<Habilidade> GetHabilidades()
+        public IQueryable<HabilidadeDto> GetHabilidades()
         {
-            return db.Habilidades;
+            var habilidades = from x in db.Habilidades
+                            select new HabilidadeDto()
+                            {
+                                Id = x.Id,
+                                Nome = x.Nome,
+                                Descricao = x.Descricao
+                            };
+            return habilidades;
         }
 
         // GET: api/Habilidades/5

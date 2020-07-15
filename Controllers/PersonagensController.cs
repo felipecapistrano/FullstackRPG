@@ -17,9 +17,20 @@ namespace FullstackRPG.Controllers
         private FullstackRPGContext db = new FullstackRPGContext();
 
         // GET: api/Personagens
-        public IQueryable<Personagem> Getpersonagens()
+        public IQueryable<PersonagemDto> Getpersonagens()
         {
-            return db.Personagens;
+            var personagens = from x in db.Personagens
+                        select new PersonagemDto()
+                        {
+                            Id = x.Id,
+                            Nome = x.Nome,
+                            Raça = x.Raça.Nome,
+                            Arma = x.Arma.Nome,
+                            Capacete = x.Capacete.Nome,
+                            Armadura = x.Armadura.Nome,
+                            PersonagemPai = x.PersonagemPaiId
+                        };
+            return personagens;
         }
 
         // GET: api/Personagens/5

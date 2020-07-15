@@ -91,3 +91,15 @@ D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG
 D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.csproj.GenerateResource.cache
 D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.v1.resources
 D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.v11.resources
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.v12.resources
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.teste.resources
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.teste2.resources
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.teste3.resources
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.teste4.resources
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\obj\Debug\FullstackRPG.Migrations.teste5.resources
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.EntityFramework.Extensions.dll
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.EntityFramework.Plus.EF6.dll
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.Expressions.Eval.dll
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.EntityFramework.Extensions.xml
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.EntityFramework.Plus.EF6.xml
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.Expressions.Eval.xml

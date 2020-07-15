@@ -19,20 +19,22 @@ namespace FullstackRPG.Models
         {
         }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.Arma> Armas { get; set; }
+        public DbSet<Arma> Armas { get; set; }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.Armadura> Armaduras { get; set; }
+        public DbSet<Armadura> Armaduras { get; set; }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.Material> Materiais { get; set; }
+        public DbSet<Material> Materiais { get; set; }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.Capacete> Capacetes { get; set; }
+        public DbSet<Capacete> Capacetes { get; set; }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.Habilidade> Habilidades { get; set; }
+        public DbSet<Habilidade> Habilidades { get; set; }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.Raça> Raça { get; set; }
+        public DbSet<Raça> Raça { get; set; }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.Personagem> Personagens { get; set; }
+        public DbSet<Personagem> Personagens { get; set; }
 
-        public System.Data.Entity.DbSet<FullstackRPG.Models.PersonagemHabilidade> PersonagemHabilidades { get; set; }
+        public DbSet<PersonagemHabilidade> PersonagemHabilidades { get; set; }
+
+        public DbSet<TipoArma> TipoArmas { get; set; }
     }
 }

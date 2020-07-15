@@ -15,6 +15,12 @@ namespace FullstackRPG.Models
         public int? ArmaId { get; set; }
         public int? CapaceteId { get; set; }
         public int? ArmaduraId { get; set; }
-        public int? PersonagemPai { get; set; }
+        public int? PersonagemPaiId { get; set; }
+
+        public virtual Raça Raça { get; set; }
+        public virtual Arma Arma { get; set; }
+        public virtual Capacete Capacete { get; set; }
+        public virtual Armadura Armadura { get; set; }
+        public virtual Personagem PersonagemPai { get; set; }
     }
 }

@@ -15,10 +15,16 @@
 
         protected override void Seed(FullstackRPG.Models.FullstackRPGContext context)
         {
+            context.TipoArmas.AddOrUpdate(x => x.Id,
+                new TipoArma() { Id = 1, Nome = "Espada" },
+                new TipoArma() { Id = 2, Nome = "Machado" },
+                new TipoArma() { Id = 3, Nome = "Maça" }
+                );
+
             context.Armas.AddOrUpdate(x => x.Id,
-                new Arma() { Id = 1, Nome = "Espada inicial", Tipo = "Espada"},
-                new Arma() { Id = 2, Nome = "Machado de guerra", Tipo = "Machado"},
-                new Arma() { Id = 3, Nome = "Excalibur", Tipo = "Espada" }
+                new Arma() { Id = 1, Nome = "Espada inicial", TipoId = 1},
+                new Arma() { Id = 2, Nome = "Machado de guerra", TipoId = 2},
+                new Arma() { Id = 3, Nome = "Excalibur", TipoId = 1 }
                 );
 
             context.Materiais.AddOrUpdate(x => x.Id,
@@ -47,7 +53,7 @@
             context.Raça.AddOrUpdate(x => x.Id,
                 new Raça() { Id = 1, Nome = "Humano"},
                 new Raça() { Id = 2, Nome = "Elfo"},
-                new Raça() { Id = 2, Nome = "Orc" }
+                new Raça() { Id = 3, Nome = "Orc" }
                 );
 
             context.Personagens.AddOrUpdate(x => x.Id,
@@ -61,6 +67,7 @@
                 new PersonagemHabilidade() { Id = 2, PersonagemId = 1, HabilidadeId = 1},
                 new PersonagemHabilidade() { Id = 3, PersonagemId = 3, HabilidadeId = 1}
                 );
+            
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method

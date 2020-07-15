@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FullstackRPG.Models;
+using FullstackRPG.Models.Dto;
 
 namespace FullstackRPG.Controllers
 {
@@ -17,9 +18,16 @@ namespace FullstackRPG.Controllers
         private FullstackRPGContext db = new FullstackRPGContext();
 
         // GET: api/Armaduras
-        public IQueryable<Armadura> GetArmaduras()
+        public IQueryable<ArmaduraDto> GetArmaduras()
         {
-            return db.Armaduras;
+            var armaduras = from x in db.Armaduras
+                        select new ArmaduraDto()
+                        {
+                            Id = x.Id,
+                            Nome = x.Nome,
+                            Material = x.Material.Nome
+                        };
+            return armaduras;
         }
 
         // GET: api/Armaduras/5

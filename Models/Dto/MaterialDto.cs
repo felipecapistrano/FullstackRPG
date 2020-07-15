@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FullstackRPG.Models
+namespace FullstackRPG.Models.Dto
 {
-    public class Arma
+    public class MaterialDto
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Tipo { get; set; }
     }
 }

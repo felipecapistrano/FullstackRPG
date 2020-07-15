@@ -10,5 +10,7 @@ namespace FullstackRPG.Models
         public int Id { get; set; }
         public int PersonagemId { get; set; }
         public int HabilidadeId { get; set; }
+        public virtual Personagem Personagem { get; set; }
+        public virtual Habilidade Habilidade { get; set; }
     }
 }
