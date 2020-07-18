@@ -1,45 +1,46 @@
 ﻿using FullstackRPG.Models;
+using FullstackRPG.Models.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 using Z.EntityFramework.Plus;
 
 namespace FullstackRPG.Data
 {
-    public class ArmaApplication
+    public class HabilidadeApplication
     {
         private FullstackRPGContext db = new FullstackRPGContext();
 
-        public List<ArmaDto> Listar()
+        public List<HabilidadeDto> Listar()
         {
             try
             {
-                return db.Armas
-                    .Select(x => new ArmaDto
+                return db.Habilidades
+                    .Select(x => new HabilidadeDto
                     {
                         Id = x.Id,
                         Nome = x.Nome,
-                        TipoId = x.TipoId,
+                        Descricao = x.Descricao,
                     })
                     .ToList();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public List<ArmaDto> Buscar(int id)
+        public List<HabilidadeDto> Buscar(int id)
         {
             try
             {
-                return db.Armas
+                return db.Habilidades
                     .Where(x => x.Id == id)
-                    .Select(x => new ArmaDto
+                    .Select(x => new HabilidadeDto
                     {
                         Id = x.Id,
                         Nome = x.Nome,
-                        TipoId = x.TipoId,
+                        Descricao = x.Descricao,
                     })
                     .ToList();
             }
@@ -52,46 +53,48 @@ namespace FullstackRPG.Data
         {
             try
             {
-                db.Armas
+                db.Habilidades
                     .Where(x => x.Id == id)
                     .Delete();
                 return id;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public int Salvar(ArmaDto arma)
+        public int Salvar(HabilidadeDto habilidade)
         {
             try
             {
-                if (arma.Id.HasValue)
+                if (habilidade.Id.HasValue)
                 {
-                    Editar(arma);
-                    return arma.Id.Value;
+                    Editar(habilidade);
+                    return habilidade.Id.Value;
                 }
                 else
-                    return Cadastrar(new Arma(arma.Nome, arma.TipoId));
-            }catch(Exception e)
+                    return Cadastrar(new Habilidade(habilidade.Nome, habilidade.Descricao));
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public void Editar(ArmaDto arma)
+        public void Editar(HabilidadeDto habilidade)
         {
-            db.Armas
-                .Where(x => x.Id == arma.Id.Value)
-                .Update(x => new Arma
+            db.Habilidades
+                .Where(x => x.Id == habilidade.Id.Value)
+                .Update(x => new Habilidade
                 {
-                    Nome = arma.Nome,
-                    TipoId = arma.TipoId
+                    Nome = habilidade.Nome,
+                    Descricao = habilidade.Descricao
                 });
         }
-        public int Cadastrar(Arma arma)
+        public int Cadastrar(Habilidade habilidade)
         {
-            db.Armas.Add(arma);
+            db.Habilidades.Add(habilidade);
             db.SaveChanges();
-            return arma.Id;
+            return habilidade.Id;
         }
     }
 }

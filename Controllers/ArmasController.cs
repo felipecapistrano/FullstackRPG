@@ -24,6 +24,13 @@ namespace FullstackRPG.Controllers
             return Ok(new ArmaApplication().Listar());
         }
 
+        [HttpGet]
+        [Route("api/armas/buscar")]
+        public IHttpActionResult Buscar(int id)
+        {
+            return Ok(new ArmaApplication().Buscar(id));
+        }
+
         [HttpPost]
         [Route("api/armas/salvar")]
         public IHttpActionResult Salvar(ArmaDto arma)

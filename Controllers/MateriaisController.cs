@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using FullstackRPG.Data;
 using FullstackRPG.Models;
 using FullstackRPG.Models.Dto;
 
@@ -15,111 +16,32 @@ namespace FullstackRPG.Controllers
 {
     public class MateriaisController : ApiController
     {
-        private FullstackRPGContext db = new FullstackRPGContext();
-
-        // GET: api/Materiais
-        public IQueryable<MaterialDto> GetMateriais()
+        [HttpGet]
+        [Route("api/Materiais/listar")]
+        public IHttpActionResult Listar()
         {
-            var materiais = from x in db.Materiais
-                            select new MaterialDto()
-                            {
-                                Id = x.Id,
-                                Nome = x.Nome,
-                            };
-            return materiais;
+            return Ok(new MaterialApplication().Listar());
         }
 
-        // GET: api/Materiais/5
-        [ResponseType(typeof(Material))]
-        public IHttpActionResult GetMaterial(int id)
+        [HttpGet]
+        [Route("api/Materiais/buscar")]
+        public IHttpActionResult Buscar(int id)
         {
-            Material material = db.Materiais.Find(id);
-            if (material == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(material);
+            return Ok(new MaterialApplication().Buscar(id));
         }
 
-        // PUT: api/Materiais/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutMaterial(int id, Material material)
+        [HttpPost]
+        [Route("api/Materiais/salvar")]
+        public IHttpActionResult Salvar(MaterialDto material)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != material.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(material).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MaterialExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(new MaterialApplication().Salvar(material));
         }
 
-        // POST: api/Materiais
-        [ResponseType(typeof(Material))]
-        public IHttpActionResult PostMaterial(Material material)
+        [HttpPost]
+        [Route("api/Materiais/remover")]
+        public IHttpActionResult Remover(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Materiais.Add(material);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = material.Id }, material);
-        }
-
-        // DELETE: api/Materiais/5
-        [ResponseType(typeof(Material))]
-        public IHttpActionResult DeleteMaterial(int id)
-        {
-            Material material = db.Materiais.Find(id);
-            if (material == null)
-            {
-                return NotFound();
-            }
-
-            db.Materiais.Remove(material);
-            db.SaveChanges();
-
-            return Ok(material);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool MaterialExists(int id)
-        {
-            return db.Materiais.Count(e => e.Id == id) > 0;
+            return Ok(new MaterialApplication().Remover(id));
         }
     }
 }

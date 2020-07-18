@@ -183,6 +183,13 @@
     <Compile Include="Controllers\TipoArmasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Data\ArmaApplication.cs" />
+    <Compile Include="Data\ArmaduraApplication.cs" />
+    <Compile Include="Data\CapaceteApplication.cs" />
+    <Compile Include="Data\HabilidadeApplication.cs" />
+    <Compile Include="Data\MaterialApplication.cs" />
+    <Compile Include="Data\PersonagemHabilidadeApplication.cs" />
+    <Compile Include="Data\RaçaApplication.cs" />
+    <Compile Include="Data\TipoArmaApplication.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

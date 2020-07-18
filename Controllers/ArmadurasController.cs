@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using FullstackRPG.Data;
 using FullstackRPG.Models;
 using FullstackRPG.Models.Dto;
 
@@ -15,112 +16,32 @@ namespace FullstackRPG.Controllers
 {
     public class ArmadurasController : ApiController
     {
-        private FullstackRPGContext db = new FullstackRPGContext();
-
-        // GET: api/Armaduras
-        public IQueryable<ArmaduraDto> GetArmaduras()
+        [HttpGet]
+        [Route("api/armaduras/listar")]
+        public IHttpActionResult Listar()
         {
-            var armaduras = from x in db.Armaduras
-                        select new ArmaduraDto()
-                        {
-                            Id = x.Id,
-                            Nome = x.Nome,
-                            Material = x.Material.Nome
-                        };
-            return armaduras;
+            return Ok(new ArmaduraApplication().Listar());
         }
 
-        // GET: api/Armaduras/5
-        [ResponseType(typeof(Armadura))]
-        public IHttpActionResult GetArmadura(int id)
+        [HttpGet]
+        [Route("api/armaduras/buscar")]
+        public IHttpActionResult Buscar(int id)
         {
-            Armadura armadura = db.Armaduras.Find(id);
-            if (armadura == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(armadura);
+            return Ok(new ArmaduraApplication().Buscar(id));
         }
 
-        // PUT: api/Armaduras/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutArmadura(int id, Armadura armadura)
+        [HttpPost]
+        [Route("api/armaduras/salvar")]
+        public IHttpActionResult Salvar(ArmaduraDto armadura)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != armadura.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(armadura).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ArmaduraExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(new ArmaduraApplication().Salvar(armadura));
         }
 
-        // POST: api/Armaduras
-        [ResponseType(typeof(Armadura))]
-        public IHttpActionResult PostArmadura(Armadura armadura)
+        [HttpPost]
+        [Route("api/armaduras/remover")]
+        public IHttpActionResult Remover(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Armaduras.Add(armadura);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = armadura.Id }, armadura);
-        }
-
-        // DELETE: api/Armaduras/5
-        [ResponseType(typeof(Armadura))]
-        public IHttpActionResult DeleteArmadura(int id)
-        {
-            Armadura armadura = db.Armaduras.Find(id);
-            if (armadura == null)
-            {
-                return NotFound();
-            }
-
-            db.Armaduras.Remove(armadura);
-            db.SaveChanges();
-
-            return Ok(armadura);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool ArmaduraExists(int id)
-        {
-            return db.Armaduras.Count(e => e.Id == id) > 0;
+            return Ok(new ArmaduraApplication().Remover(id));
         }
     }
 }

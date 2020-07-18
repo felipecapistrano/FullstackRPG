@@ -13,22 +13,18 @@ namespace FullstackRPG.Models
 
         public ArmaDto()
         {
-            this.Id = Id;
-            this.Nome = Nome;
-            this.TipoId = TipoId;
         }
-        public ArmaDto(int Id, string Nome, int TipoId)
+        public ArmaDto(int id, string nome, int tipoid)
         {
-            this.Id = Id;
-            this.Nome = Nome;
-            this.TipoId = TipoId;
+            this.Id = id;
+            this.Nome = nome;
+            this.TipoId = tipoid;
         }
 
-        public ArmaDto(string Nome, int TipoId)
+        public ArmaDto(string nome, int tipoid)
         {
-            this.Id = Id;
-            this.Nome = Nome;
-            this.TipoId = TipoId;
+            this.Nome = nome;
+            this.TipoId = tipoid;
         }
     }
 }

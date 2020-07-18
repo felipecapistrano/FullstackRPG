@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using FullstackRPG.Data;
 using FullstackRPG.Models;
 using FullstackRPG.Models.Dto;
 
@@ -15,112 +16,32 @@ namespace FullstackRPG.Controllers
 {
     public class HabilidadesController : ApiController
     {
-        private FullstackRPGContext db = new FullstackRPGContext();
-
-        // GET: api/Habilidades
-        public IQueryable<HabilidadeDto> GetHabilidades()
+        [HttpGet]
+        [Route("api/Habilidades/listar")]
+        public IHttpActionResult Listar()
         {
-            var habilidades = from x in db.Habilidades
-                            select new HabilidadeDto()
-                            {
-                                Id = x.Id,
-                                Nome = x.Nome,
-                                Descricao = x.Descricao
-                            };
-            return habilidades;
+            return Ok(new HabilidadeApplication().Listar());
         }
 
-        // GET: api/Habilidades/5
-        [ResponseType(typeof(Habilidade))]
-        public IHttpActionResult GetHabilidade(int id)
+        [HttpGet]
+        [Route("api/Habilidades/buscar")]
+        public IHttpActionResult Buscar(int id)
         {
-            Habilidade habilidade = db.Habilidades.Find(id);
-            if (habilidade == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(habilidade);
+            return Ok(new HabilidadeApplication().Buscar(id));
         }
 
-        // PUT: api/Habilidades/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutHabilidade(int id, Habilidade habilidade)
+        [HttpPost]
+        [Route("api/Habilidades/salvar")]
+        public IHttpActionResult Salvar(HabilidadeDto habilidade)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != habilidade.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(habilidade).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!HabilidadeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(new HabilidadeApplication().Salvar(habilidade));
         }
 
-        // POST: api/Habilidades
-        [ResponseType(typeof(Habilidade))]
-        public IHttpActionResult PostHabilidade(Habilidade habilidade)
+        [HttpPost]
+        [Route("api/Habilidades/remover")]
+        public IHttpActionResult Remover(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Habilidades.Add(habilidade);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = habilidade.Id }, habilidade);
-        }
-
-        // DELETE: api/Habilidades/5
-        [ResponseType(typeof(Habilidade))]
-        public IHttpActionResult DeleteHabilidade(int id)
-        {
-            Habilidade habilidade = db.Habilidades.Find(id);
-            if (habilidade == null)
-            {
-                return NotFound();
-            }
-
-            db.Habilidades.Remove(habilidade);
-            db.SaveChanges();
-
-            return Ok(habilidade);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool HabilidadeExists(int id)
-        {
-            return db.Habilidades.Count(e => e.Id == id) > 0;
+            return Ok(new HabilidadeApplication().Remover(id));
         }
     }
 }

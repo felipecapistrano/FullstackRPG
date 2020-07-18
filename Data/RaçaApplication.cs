@@ -1,45 +1,44 @@
 ﻿using FullstackRPG.Models;
+using FullstackRPG.Models.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 using Z.EntityFramework.Plus;
 
 namespace FullstackRPG.Data
 {
-    public class ArmaApplication
+    public class RaçaApplication
     {
         private FullstackRPGContext db = new FullstackRPGContext();
 
-        public List<ArmaDto> Listar()
+        public List<RaçaDto> Listar()
         {
             try
             {
-                return db.Armas
-                    .Select(x => new ArmaDto
+                return db.Raça
+                    .Select(x => new RaçaDto
                     {
                         Id = x.Id,
                         Nome = x.Nome,
-                        TipoId = x.TipoId,
                     })
                     .ToList();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public List<ArmaDto> Buscar(int id)
+        public List<RaçaDto> Buscar(int id)
         {
             try
             {
-                return db.Armas
+                return db.Raça
                     .Where(x => x.Id == id)
-                    .Select(x => new ArmaDto
+                    .Select(x => new RaçaDto
                     {
                         Id = x.Id,
                         Nome = x.Nome,
-                        TipoId = x.TipoId,
                     })
                     .ToList();
             }
@@ -52,46 +51,47 @@ namespace FullstackRPG.Data
         {
             try
             {
-                db.Armas
+                db.Raça
                     .Where(x => x.Id == id)
                     .Delete();
                 return id;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public int Salvar(ArmaDto arma)
+        public int Salvar(RaçaDto raça)
         {
             try
             {
-                if (arma.Id.HasValue)
+                if (raça.Id.HasValue)
                 {
-                    Editar(arma);
-                    return arma.Id.Value;
+                    Editar(raça);
+                    return raça.Id.Value;
                 }
                 else
-                    return Cadastrar(new Arma(arma.Nome, arma.TipoId));
-            }catch(Exception e)
+                    return Cadastrar(new Raça(raça.Nome));
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public void Editar(ArmaDto arma)
+        public void Editar(RaçaDto raça)
         {
-            db.Armas
-                .Where(x => x.Id == arma.Id.Value)
-                .Update(x => new Arma
+            db.Raça
+                .Where(x => x.Id == raça.Id.Value)
+                .Update(x => new Raça
                 {
-                    Nome = arma.Nome,
-                    TipoId = arma.TipoId
+                    Nome = raça.Nome,
                 });
         }
-        public int Cadastrar(Arma arma)
+        public int Cadastrar(Raça raça)
         {
-            db.Armas.Add(arma);
+            db.Raça.Add(raça);
             db.SaveChanges();
-            return arma.Id;
+            return raça.Id;
         }
     }
 }

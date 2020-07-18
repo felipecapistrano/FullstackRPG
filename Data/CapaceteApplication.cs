@@ -1,45 +1,46 @@
 ﻿using FullstackRPG.Models;
+using FullstackRPG.Models.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 using Z.EntityFramework.Plus;
 
 namespace FullstackRPG.Data
 {
-    public class ArmaApplication
+    public class CapaceteApplication
     {
         private FullstackRPGContext db = new FullstackRPGContext();
 
-        public List<ArmaDto> Listar()
+        public List<CapaceteDto> Listar()
         {
             try
             {
-                return db.Armas
-                    .Select(x => new ArmaDto
+                return db.Capacetes
+                    .Select(x => new CapaceteDto
                     {
                         Id = x.Id,
                         Nome = x.Nome,
-                        TipoId = x.TipoId,
+                        MaterialId = x.MaterialId,
                     })
                     .ToList();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public List<ArmaDto> Buscar(int id)
+        public List<CapaceteDto> Buscar(int id)
         {
             try
             {
-                return db.Armas
+                return db.Capacetes
                     .Where(x => x.Id == id)
-                    .Select(x => new ArmaDto
+                    .Select(x => new CapaceteDto
                     {
                         Id = x.Id,
                         Nome = x.Nome,
-                        TipoId = x.TipoId,
+                        MaterialId = x.MaterialId,
                     })
                     .ToList();
             }
@@ -52,46 +53,48 @@ namespace FullstackRPG.Data
         {
             try
             {
-                db.Armas
+                db.Capacetes
                     .Where(x => x.Id == id)
                     .Delete();
                 return id;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public int Salvar(ArmaDto arma)
+        public int Salvar(CapaceteDto capacete)
         {
             try
             {
-                if (arma.Id.HasValue)
+                if (capacete.Id.HasValue)
                 {
-                    Editar(arma);
-                    return arma.Id.Value;
+                    Editar(capacete);
+                    return capacete.Id.Value;
                 }
                 else
-                    return Cadastrar(new Arma(arma.Nome, arma.TipoId));
-            }catch(Exception e)
+                    return Cadastrar(new Capacete(capacete.Nome, capacete.MaterialId));
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public void Editar(ArmaDto arma)
+        public void Editar(CapaceteDto capacete)
         {
-            db.Armas
-                .Where(x => x.Id == arma.Id.Value)
-                .Update(x => new Arma
+            db.Capacetes
+                .Where(x => x.Id == capacete.Id.Value)
+                .Update(x => new Capacete
                 {
-                    Nome = arma.Nome,
-                    TipoId = arma.TipoId
+                    Nome = capacete.Nome,
+                    MaterialId = capacete.MaterialId
                 });
         }
-        public int Cadastrar(Arma arma)
+        public int Cadastrar(Capacete capacete)
         {
-            db.Armas.Add(arma);
+            db.Capacetes.Add(capacete);
             db.SaveChanges();
-            return arma.Id;
+            return capacete.Id;
         }
     }
 }

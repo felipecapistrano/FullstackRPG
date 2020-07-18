@@ -9,5 +9,14 @@ namespace FullstackRPG.Models
     {
         public int Id { get; set; }
         public string Nome { get; set; }
+
+        public Raça()
+        {
+
+        }
+        public Raça(string nome)
+        {
+            this.Nome = nome;
+        }
     }
 }

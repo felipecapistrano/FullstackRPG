@@ -1,45 +1,44 @@
 ﻿using FullstackRPG.Models;
+using FullstackRPG.Models.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 using Z.EntityFramework.Plus;
 
 namespace FullstackRPG.Data
 {
-    public class ArmaApplication
+    public class TipoArmaApplication
     {
         private FullstackRPGContext db = new FullstackRPGContext();
 
-        public List<ArmaDto> Listar()
+        public List<TipoArmaDto> Listar()
         {
             try
             {
-                return db.Armas
-                    .Select(x => new ArmaDto
+                return db.TipoArmas
+                    .Select(x => new TipoArmaDto
                     {
                         Id = x.Id,
                         Nome = x.Nome,
-                        TipoId = x.TipoId,
                     })
                     .ToList();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public List<ArmaDto> Buscar(int id)
+        public List<TipoArmaDto> Buscar(int id)
         {
             try
             {
-                return db.Armas
+                return db.TipoArmas
                     .Where(x => x.Id == id)
-                    .Select(x => new ArmaDto
+                    .Select(x => new TipoArmaDto
                     {
                         Id = x.Id,
                         Nome = x.Nome,
-                        TipoId = x.TipoId,
                     })
                     .ToList();
             }
@@ -52,46 +51,47 @@ namespace FullstackRPG.Data
         {
             try
             {
-                db.Armas
+                db.TipoArmas
                     .Where(x => x.Id == id)
                     .Delete();
                 return id;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public int Salvar(ArmaDto arma)
+        public int Salvar(TipoArmaDto tipoarma)
         {
             try
             {
-                if (arma.Id.HasValue)
+                if (tipoarma.Id.HasValue)
                 {
-                    Editar(arma);
-                    return arma.Id.Value;
+                    Editar(tipoarma);
+                    return tipoarma.Id.Value;
                 }
                 else
-                    return Cadastrar(new Arma(arma.Nome, arma.TipoId));
-            }catch(Exception e)
+                    return Cadastrar(new TipoArma(tipoarma.Nome));
+            }
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        public void Editar(ArmaDto arma)
+        public void Editar(TipoArmaDto tipoarma)
         {
-            db.Armas
-                .Where(x => x.Id == arma.Id.Value)
-                .Update(x => new Arma
+            db.TipoArmas
+                .Where(x => x.Id == tipoarma.Id.Value)
+                .Update(x => new TipoArma
                 {
-                    Nome = arma.Nome,
-                    TipoId = arma.TipoId
+                    Nome = tipoarma.Nome,
                 });
         }
-        public int Cadastrar(Arma arma)
+        public int Cadastrar(TipoArma tipoarma)
         {
-            db.Armas.Add(arma);
+            db.TipoArmas.Add(tipoarma);
             db.SaveChanges();
-            return arma.Id;
+            return tipoarma.Id;
         }
     }
 }

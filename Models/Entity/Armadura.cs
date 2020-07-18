@@ -11,5 +11,15 @@ namespace FullstackRPG.Models
         public string Nome { get; set; }
         public int MaterialId { get; set; }
         public virtual Material Material { get; set; }
+
+        public Armadura()
+        {
+
+        }
+        public Armadura(string nome, int materialid)
+        {
+            this.Nome = nome;
+            this.MaterialId = materialid;
+        }
     }
 }

@@ -11,5 +11,14 @@ namespace FullstackRPG.Models
     {
         public int Id { get; set; }
         public string Nome { get; set; }
+
+        public Material()
+        {
+
+        }
+        public Material(string nome)
+        {
+            this.Nome = nome;
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using FullstackRPG.Data;
 using FullstackRPG.Models;
 using FullstackRPG.Models.Dto;
 
@@ -15,111 +16,32 @@ namespace FullstackRPG.Controllers
 {
     public class RaçasController : ApiController
     {
-        private FullstackRPGContext db = new FullstackRPGContext();
-
-        // GET: api/Raças
-        public IQueryable<RaçaDto> GetRaça()
+        [HttpGet]
+        [Route("api/Raças/listar")]
+        public IHttpActionResult Listar()
         {
-            var raças = from x in db.Raça
-                            select new RaçaDto()
-                            {
-                                Id = x.Id,
-                                Nome = x.Nome,
-                            };
-            return raças;
+            return Ok(new RaçaApplication().Listar());
         }
 
-        // GET: api/Raças/5
-        [ResponseType(typeof(Raça))]
-        public IHttpActionResult GetRaça(int id)
+        [HttpGet]
+        [Route("api/Raças/buscar")]
+        public IHttpActionResult Buscar(int id)
         {
-            Raça raça = db.Raça.Find(id);
-            if (raça == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(raça);
+            return Ok(new RaçaApplication().Buscar(id));
         }
 
-        // PUT: api/Raças/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutRaça(int id, Raça raça)
+        [HttpPost]
+        [Route("api/Raças/salvar")]
+        public IHttpActionResult Salvar(RaçaDto raça)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != raça.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(raça).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RaçaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(new RaçaApplication().Salvar(raça));
         }
 
-        // POST: api/Raças
-        [ResponseType(typeof(Raça))]
-        public IHttpActionResult PostRaça(Raça raça)
+        [HttpPost]
+        [Route("api/Raças/remover")]
+        public IHttpActionResult Remover(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Raça.Add(raça);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = raça.Id }, raça);
-        }
-
-        // DELETE: api/Raças/5
-        [ResponseType(typeof(Raça))]
-        public IHttpActionResult DeleteRaça(int id)
-        {
-            Raça raça = db.Raça.Find(id);
-            if (raça == null)
-            {
-                return NotFound();
-            }
-
-            db.Raça.Remove(raça);
-            db.SaveChanges();
-
-            return Ok(raça);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool RaçaExists(int id)
-        {
-            return db.Raça.Count(e => e.Id == id) > 0;
+            return Ok(new RaçaApplication().Remover(id));
         }
     }
 }
