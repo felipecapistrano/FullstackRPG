@@ -1,0 +1,36 @@
+#border {
+    position: fixed;
+    height: 60%;
+    width: 500px;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 300px;
+    background-color: rgb(188, 108, 37);
+    margin-top: 15vh;
+    height: 60%;
+    box-shadow: rgb(48, 46, 46) 5px 5px 10px;
+}
+
+.sidebar-button {
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: bolder;
+    box-sizing: border-box;
+    align-self: center;
+    width: 90%;
+    height: 16%;
+    margin-top: 5%;
+    background-color: rgb(96, 108, 56);
+    border: none;
+    box-shadow: rgb(48, 46, 46) 5px 5px 10px;
+}
+
+.sidebar-button:hover {
+    transform: translateX(3%);
+    background-color: rgb(116, 129, 73);
+    transition: all 0.3s ease;
+}

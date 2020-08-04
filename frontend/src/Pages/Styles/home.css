@@ -1,0 +1,17 @@
+#intro {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    justify-content: center;
+    width: 60%;
+}
+
+#intro-text {
+    margin-top: 35%;
+}
+
+#intro-text h1 {
+    font-size: 42px;
+}
