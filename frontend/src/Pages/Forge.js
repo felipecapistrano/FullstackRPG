@@ -1,6 +1,5 @@
 import React, {useState} from "react"
 import SideBar from "./Components/SideBar"
-import GuildScript from "./Components/Scripts/GuildScript"
 import "./Styles/background.css"
 import "./Styles/fade.css"
 
@@ -16,7 +15,7 @@ function Forge() {
     return (
         <div id="forge" className="fadein">
             <SideBar sideButtons={sideButtons}/>
-            {startText && <GuildScript end={(e) => setStartText(e)}/>}
+            {/*startText && <GuildScript end={(e) => setStartText(e)}/>*/}
         </div>
     )
 }
