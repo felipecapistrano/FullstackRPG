@@ -7,12 +7,36 @@ namespace FullstackRPG.Models
 {
     public class PersonagemDto
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Nome { get; set; }
-        public string Raça { get; set; }
-        public string Arma { get; set; }
-        public string Capacete { get; set; }
-        public string Armadura { get; set; }
-        public int? PersonagemPai { get; set; }
+        public int RaçaId { get; set; }
+        public int? ArmaId { get; set; }
+        public int? CapaceteId { get; set; }
+        public int? ArmaduraId { get; set; }
+        public int? PersonagemPaiId { get; set; }
+
+        public PersonagemDto()
+        {
+        }
+        public PersonagemDto(int id, string nome, int raçaid, int armaid, int capaceteid, int armaduraid, int personagempaiid)
+        {
+            this.Id = id;
+            this.Nome = nome;
+            this.RaçaId = raçaid;
+            this.ArmaId = armaid;
+            this.CapaceteId = capaceteid;
+            this.ArmaduraId = armaduraid;
+            this.PersonagemPaiId = personagempaiid;
+        }
+
+        public PersonagemDto(string nome, int raçaid, int armaid, int capaceteid, int armaduraid, int personagempaiid)
+        {
+            this.Nome = nome;
+            this.RaçaId = raçaid;
+            this.ArmaId = armaid;
+            this.CapaceteId = capaceteid;
+            this.ArmaduraId = armaduraid;
+            this.PersonagemPaiId = personagempaiid;
+        }
     }
 }

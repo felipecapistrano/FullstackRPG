@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import TypeWriter from "./TypeWriter"
-import "../Styles/dialoguebox.css"
+import "../../Styles/dialoguebox.css"
 
 function DialogueBox (props) {
     const [textEnd, setTextEnd] = useState(false)

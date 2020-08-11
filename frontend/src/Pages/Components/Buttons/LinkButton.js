@@ -1,6 +1,6 @@
 import React from "react"
 import {useHistory} from "react-router-dom"
-import "../../Styles/fade.css"
+import "../../../Styles/fade.css"
 
 function LinkButton (props) {
     const history = useHistory()

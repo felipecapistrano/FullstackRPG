@@ -103,3 +103,6 @@ D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.Expressions.Eval
 D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.EntityFramework.Extensions.xml
 D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.EntityFramework.Plus.EF6.xml
 D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\Z.Expressions.Eval.xml
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\System.Web.Cors.dll
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\System.Web.Http.Cors.dll
+D:\Program Files (x86)\gitProjects\FULLSTACK\FullstackRPG\bin\System.Web.Http.Cors.xml

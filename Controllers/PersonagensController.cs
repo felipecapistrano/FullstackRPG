@@ -8,122 +8,40 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using FullstackRPG.Data;
 using FullstackRPG.Models;
 
 namespace FullstackRPG.Controllers
 {
     public class PersonagensController : ApiController
     {
-        private FullstackRPGContext db = new FullstackRPGContext();
 
-        // GET: api/Personagens
-        public IQueryable<PersonagemDto> Getpersonagens()
+        [HttpGet]
+        [Route("api/personagens/listar")]
+        public IHttpActionResult Listar()
         {
-            var personagens = from x in db.Personagens
-                        select new PersonagemDto()
-                        {
-                            Id = x.Id,
-                            Nome = x.Nome,
-                            Raça = x.Raça.Nome,
-                            Arma = x.Arma.Nome,
-                            Capacete = x.Capacete.Nome,
-                            Armadura = x.Armadura.Nome,
-                            PersonagemPai = x.PersonagemPaiId
-                        };
-            return personagens;
+            return Ok(new PersonagemApplication().Listar());
         }
 
-        // GET: api/Personagens/5
-        [ResponseType(typeof(Personagem))]
-        public IHttpActionResult GetPersonagem(int id)
+        [HttpGet]
+        [Route("api/personagens/buscar")]
+        public IHttpActionResult Buscar(int id)
         {
-            Personagem personagem = db.Personagens.Find(id);
-            if (personagem == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(personagem);
+            return Ok(new PersonagemApplication().Buscar(id));
         }
 
-        // PUT: api/Personagens/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPersonagem(int id, Personagem personagem)
+        [HttpPost]
+        [Route("api/personagens/salvar")]
+        public IHttpActionResult Salvar(PersonagemDto arma)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != personagem.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(personagem).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PersonagemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(new PersonagemApplication().Salvar(arma));
         }
 
-        // POST: api/Personagens
-        [ResponseType(typeof(Personagem))]
-        public IHttpActionResult PostPersonagem(Personagem personagem)
+        [HttpPost]
+        [Route("api/personagens/remover")]
+        public IHttpActionResult Remover(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Personagens.Add(personagem);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = personagem.Id }, personagem);
-        }
-
-        // DELETE: api/Personagens/5
-        [ResponseType(typeof(Personagem))]
-        public IHttpActionResult DeletePersonagem(int id)
-        {
-            Personagem personagem = db.Personagens.Find(id);
-            if (personagem == null)
-            {
-                return NotFound();
-            }
-
-            db.Personagens.Remove(personagem);
-            db.SaveChanges();
-
-            return Ok(personagem);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool PersonagemExists(int id)
-        {
-            return db.Personagens.Count(e => e.Id == id) > 0;
+            return Ok(new PersonagemApplication().Remover(id));
         }
     }
 }

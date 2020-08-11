@@ -17,28 +17,28 @@ namespace FullstackRPG.Controllers
     public class TipoArmasController : ApiController
     {
         [HttpGet]
-        [Route("api/Raças/listar")]
+        [Route("api/TipoArmas/listar")]
         public IHttpActionResult Listar()
         {
             return Ok(new TipoArmaApplication().Listar());
         }
 
         [HttpGet]
-        [Route("api/Raças/buscar")]
+        [Route("api/TipoArmas/buscar")]
         public IHttpActionResult Buscar(int id)
         {
             return Ok(new TipoArmaApplication().Buscar(id));
         }
 
         [HttpPost]
-        [Route("api/Raças/salvar")]
+        [Route("api/TipoArmas/salvar")]
         public IHttpActionResult Salvar(TipoArmaDto tipoarma)
         {
             return Ok(new TipoArmaApplication().Salvar(tipoarma));
         }
 
         [HttpPost]
-        [Route("api/Raças/remover")]
+        [Route("api/TipoArmas/remover")]
         public IHttpActionResult Remover(int id)
         {
             return Ok(new TipoArmaApplication().Remover(id));

@@ -1,12 +1,15 @@
 import React from "react"
 import LinkButton from "./Buttons/LinkButton"
-import "../Styles/sidebar.css"
+import "../../Styles/sidebar.css"
 
 function SideBar(props) {
+    let key = 0
     const buttons = props.sideButtons.map(function(item) {
+        item.key = key
+        key += 1
         if (!item.changescene) {
             return (
-                <button onClick={() => item.script(true)} className="sidebar-button">
+                <button onClick={() => item.script(true)} className="sidebar-button" key={item.key}>
                     {item.name}
                 </button>
             )
@@ -17,6 +20,7 @@ function SideBar(props) {
                     text={item.name} 
                     classes={"sidebar-button"} 
                     element={item.element}
+                    key={item.key}
                     />
         }
     })

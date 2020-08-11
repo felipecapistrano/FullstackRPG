@@ -1,0 +1,51 @@
+.div-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgb(188, 108, 37);
+    outline: 2px solid rgba(0, 0, 0, 0.6);
+    width: 20%;
+    height: 45%;
+    position: fixed;
+    margin-top: 25vh;
+    margin-left: 80vh;
+    padding: .5%;
+}
+
+.form label {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.form select, input, option {
+    background-color: rgb(237, 242, 244);
+    text-align: center;
+    align-self: center;
+    width: 80%;
+    border: 1px solid rgb(188, 108, 37);
+}
+
+.form button {
+    font-size: 16px;
+    font-weight: bolder;
+    transition: all 0.5s ease;
+    margin-top: auto;
+    height: 15%;
+    background-color: rgb(188, 108, 37);
+    box-shadow: rgb(48, 46, 46) 5px 5px 10px;
+    border: none;
+    transition: all 0.5s ease;
+}
+
+.form button:hover {
+    background-color: rgb(209, 131, 63);
+    transition: all 0.5s ease;
+}

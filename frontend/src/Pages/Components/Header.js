@@ -1,7 +1,7 @@
 import React from "react"
-import "../Styles/header.css"
-import "../Styles/buttons.css"
 import LinkButton from "./Buttons/LinkButton"
+import "../../Styles/header.css"
+import "../../Styles/buttons.css"
 
 function Header() {
     return (
