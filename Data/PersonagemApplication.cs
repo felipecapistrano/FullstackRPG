@@ -34,7 +34,7 @@ namespace FullstackRPG.Data
                 throw e;
             }
         }
-        public List<PersonagemDto> Buscar(int id)
+        public PersonagemDto Buscar(int id)
         {
             try
             {
@@ -48,9 +48,9 @@ namespace FullstackRPG.Data
                         ArmaId = x.ArmaId,
                         CapaceteId = x.CapaceteId,
                         ArmaduraId = x.ArmaduraId,
-                        PersonagemPaiId = x.PersonagemPaiId
+                        PersonagemPaiId = x.PersonagemPaiId,
                     })
-                    .ToList();
+                    .FirstOrDefault();
             }
             catch (Exception e)
             {
@@ -61,7 +61,7 @@ namespace FullstackRPG.Data
         {
             try
             {
-                db.Armas
+                db.Personagens
                     .Where(x => x.Id == id)
                     .Delete();
                 return id;

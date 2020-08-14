@@ -13,6 +13,7 @@ function IdentifyScript (props) {
     const data = {
         personagens: useDataFetch("/api/personagens/listar"),
     }
+    console.log(data.personagens)
 
     const config = {
         initialValues: {

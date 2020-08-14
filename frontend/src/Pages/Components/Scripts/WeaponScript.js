@@ -30,7 +30,7 @@ function WeaponScript (props) {
         }],
         select: [{
             id: "Tipoid",
-            titulo: "Tipoid",
+            titulo: "Tipo",
             options: data.tipos
         }],
     }

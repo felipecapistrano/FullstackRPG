@@ -1,5 +1,6 @@
 import React from "react"
 import Sidebar from "./Components/SideBar"
+import Info from "./Components/Info"
 import "../Styles/background.css"
 import "../Styles/fade.css"
 
@@ -13,6 +14,7 @@ function Plaza() {
     
     return (
         <div id="plaza" className="fadein">
+            <Info/>
             <Sidebar sideButtons={sideButtons}/>
         </div>
     )

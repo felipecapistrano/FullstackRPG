@@ -30,7 +30,7 @@ function HelmScript (props) {
         }],
         select: [{
             id: "MaterialId",
-            titulo: "MaterialId",
+            titulo: "Material",
             options: data.materiais
         }],
     }

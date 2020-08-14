@@ -47,7 +47,7 @@ function Form (props) {
         <form className="form" onSubmit={formik.handleSubmit}>
             {input}
             {select}
-            <button type="submit">Registrar</button>
+            <button className="form-button" type="submit">Registrar</button>
         </form>
     )
 }

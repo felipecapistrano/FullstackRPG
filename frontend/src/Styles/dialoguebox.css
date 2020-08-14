@@ -7,7 +7,7 @@
     height: 20%;
     width: 60%;
     background-color: rgba(0, 0, 0, 0.6);
-    border: 2px solid rgb(188, 108, 37);
+    border: 2px solid rgb(48, 125, 128);
     outline: 2px solid rgba(0, 0, 0, 0.6);
 }
 
@@ -16,7 +16,7 @@
 }
 
 #arrow {
-    border: solid rgb(188, 108, 37);
+    border: solid rgb(48, 125, 128);
     border-width: 0 4px 4px 0;
     position: fixed;
     margin-top: 91vh;
